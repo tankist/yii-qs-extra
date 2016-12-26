@@ -20,5 +20,10 @@
     "minimum-stability": "dev",
     "scripts": {
         "post-autoload-dump": "mkdir tests/_output/runtime -p"
+    },
+    "autoload": {
+        "classmap": [
+            "lib/"
+        ]
     }
 }
