@@ -1,0 +1,24 @@
+{
+    "name": "tankist/yii-qs-extra",
+    "description": "Yii extra packages",
+    "type": "library",
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii": "^1.1",
+        "aws/aws-sdk-php": "^2.8"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Paul Klimov",
+            "email": "pklimov@quartsoft.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "scripts": {
+        "post-autoload-dump": "mkdir tests/_output/runtime -p"
+    }
+}

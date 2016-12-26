@@ -60,8 +60,7 @@ class QsQueueManagerAmazonSqsTest extends CTestCase {
 		
 		$testAwsSdkAutoloaderPath = '/test/amazon/sdk/library/path';
 		$this->assertTrue($queueManager->setAwsSdkAutoloaderPath($testAwsSdkAutoloaderPath), 'Unable to set amazon sdk library path!');
-		$this->assertEquals($testAwsSdkAutoloaderPath, $queueManager->getAwsSdkAutoloaderPath(), 'Unable to set amazon sdk autoloader path correctly!');
-		
+
 		$testAmazonSqs = new stdClass();
 		$this->assertTrue($queueManager->setAmazonSqs($testAmazonSqs), 'Unable to set amazon sqs object!');
 		$this->assertEquals($queueManager->getAmazonSqs(), $testAmazonSqs, 'Unable to set amazon sqs object correctly!');
@@ -80,16 +79,6 @@ class QsQueueManagerAmazonSqsTest extends CTestCase {
 		);
 		$this->assertTrue($queueManager->setDefaultQueueAttributes($testDefaultQueueAttributes), 'Unable to set default queue attributes!');
 		$this->assertEquals($queueManager->getDefaultQueueAttributes(), $testDefaultQueueAttributes, 'Unable to set default queue attributes correctly!');
-	}
-
-	/**
-	 * @depends testSetGet
-	 */
-	public function testGetDefaultAwsSdkAutoloaderPath() {
-		$queueManager = Yii::createComponent('QsQueueManagerAmazonSqs');
-		
-		$defaultAmazonSdkLibraryPath = $queueManager->getAwsSdkAutoloaderPath();
-		$this->assertTrue(!empty($defaultAmazonSdkLibraryPath), 'Unable to get default amazon sdk library path!');
 	}
 
 	/**

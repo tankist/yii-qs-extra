@@ -80,23 +80,6 @@ class QsQueueManagerAmazonSqs extends QsQueueManager {
 	 */
 	protected $_actualRegion = '';
 
-	// Set / Get :
-
-	public function setAwsSdkAutoloaderPath($awsSdkAutoloaderPath) {
-		if (!is_string($awsSdkAutoloaderPath)) {
-			throw new CException('"' . get_class($this) . '::awsSdkAutoloaderPath" should be a string!');
-		}
-		$this->_awsSdkAutoloaderPath = $awsSdkAutoloaderPath;
-		return true;
-	}
-
-	public function getAwsSdkAutoloaderPath() {
-		if (empty($this->_awsSdkAutoloaderPath)) {
-			$this->initAwsSdkAutoloaderPath();
-		}
-		return $this->_awsSdkAutoloaderPath;
-	}
-
 	public function setAmazonSqs($amazonSqs) {
 		if (!is_object($amazonSqs)) {
 			throw new CException('"' . get_class($this) . '::amazonSqs" should be an object!');
@@ -200,22 +183,10 @@ class QsQueueManagerAmazonSqs extends QsQueueManager {
 	}
 
 	/**
-	 * Initializes the path to Amazon SDK library.
-	 * @return boolean success.
-	 */
-	protected function initAwsSdkAutoloaderPath() {
-		$libraryRootPath = realpath(dirname(__FILE__) . '/../../');
-		$amazonSdkLibraryPath = $libraryRootPath . '/vendors/aws-sdk/vendor/autoload.php';
-		$this->_awsSdkAutoloaderPath = $amazonSdkLibraryPath;
-		return true;
-	}
-
-	/**
 	 * Initializes the instance of the Amazon SQS service gateway.
 	 * @return boolean success.
 	 */
 	protected function initAmazonSqs() {
-		require_once($this->getAwsSdkAutoloaderPath());
 		$amazonSqsOptions = array(
 			'key' => $this->getAwsKey(),
 			'secret' => $this->getAwsSecretKey(),
